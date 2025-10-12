@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Level Selector</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #3d7eaa 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .level-selector-container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+         /* Back Button */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: background-color 0.3s, transform 0.3s;
+            z-index: 10;
+        }
+
+        .back-button:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateX(-3px);
+        }
+
+        .selector-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .selector-title {
+            font-size: 1.5em;
+            color: #2a5298;
+            margin-bottom: 8px;
+        }
+
+        .selector-subtitle {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .levels-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* Hide radio buttons */
+        input[type="radio"] {
+            display: none;
+        }
+
+        .level-option {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .level-label {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .level-label:hover {
+            transform: translateX(5px);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Radio button custom styling */
+        .radio-circle {
+            width: 24px;
+            height: 24px;
+            border: 3px solid #2a5298;
+            border-radius: 50%;
+            position: relative;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .radio-circle::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #2a5298;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.3s ease;
+        }
+
+        /* When radio is checked */
+        input[type="radio"]:checked + .level-label {
+            border-color: #2a5298;
+            background: #e3f2fd;
+        }
+
+        input[type="radio"]:checked + .level-label .radio-circle::after {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .level-content {
+            flex: 1;
+        }
+
+        .level-name {
+            font-weight: 600;
+            font-size: 1.1em;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .level-description {
+            font-size: 0.85em;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        .level-badge {
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.75em;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        /* Badge colors for each level */
+        .badge-basic {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .badge-intermediate {
+            background: #fff3e0;
+            color: #f57c00;
+        }
+
+        .badge-advanced {
+            background: #f3e5f5;
+            color: #7b1fa2;
+        }
+
+        .badge-expert {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        /* Specific styling when each level is selected */
+        #basic:checked + .level-label {
+            border-color: #1976d2;
+            background: #e3f2fd;
+        }
+
+        #basic:checked + .level-label .radio-circle {
+            border-color: #1976d2;
+        }
+
+        #basic:checked + .level-label .radio-circle::after {
+            background: #1976d2;
+        }
+
+        #intermediate:checked + .level-label {
+            border-color: #f57c00;
+            background: #fff3e0;
+        }
+
+        #intermediate:checked + .level-label .radio-circle {
+            border-color: #f57c00;
+        }
+
+        #intermediate:checked + .level-label .radio-circle::after {
+            background: #f57c00;
+        }
+
+        #advanced:checked + .level-label {
+            border-color: #7b1fa2;
+            background: #f3e5f5;
+        }
+
+        #advanced:checked + .level-label .radio-circle {
+            border-color: #7b1fa2;
+        }
+
+        #advanced:checked + .level-label .radio-circle::after {
+            background: #7b1fa2;
+        }
+
+        #expert:checked + .level-label {
+            border-color: #c62828;
+            background: #ffebee;
+        }
+
+        #expert:checked + .level-label .radio-circle {
+            border-color: #c62828;
+        }
+
+        #expert:checked + .level-label .radio-circle::after {
+            background: #c62828;
+        }
+
+        @media (max-width: 480px) {
+            .level-selector-container {
+                padding: 20px;
+            }
+
+            .selector-title {
+                font-size: 1.3em;
+            }
+
+            .level-label {
+                padding: 12px 15px;
+            }
+
+            .level-name {
+                font-size: 1em;
+            }
+        }
+        .back-button {
+            color:white;
+                
+                
+            }
+    </style>
+</head>
+<body>
+    <!-- Back Button -->
+    <a href="Courses.html" class="back-button">←</a>
+
+    <div class="level-selector-container">
+        <div class="selector-header">
+            <h2 class="selector-title">📊 Select Your Skill Level</h2>
+            <p class="selector-subtitle">Choose the level that best matches your current skills</p>
+        </div>
+
+        <div class="levels-wrapper">
+            <!-- Basic Level -->
+            <div class="level-option">
+                <input type="radio" name="skill-level" id="basic" value="basic">
+                <label for="basic" class="level-label">
+                    <div class="radio-circle"></div>
+                    <div class="level-content">
+                        <div class="level-name">🌱 Basic</div>
+                        <div class="level-description">Just starting out, learning fundamentals and syntax</div>
+                    </div>
+                    <span class="level-badge badge-basic">BEGINNER</span>
+                </label>
+            </div>
+
+            <!-- Intermediate Level -->
+            <div class="level-option">
+                <input type="radio" name="skill-level" id="intermediate" value="intermediate">
+                <label for="intermediate" class="level-label">
+                    <div class="radio-circle"></div>
+                    <div class="level-content">
+                        <div class="level-name">🔥 Intermediate</div>
+                        <div class="level-description">Comfortable with basics, building small projects</div>
+                    </div>
+                    <span class="level-badge badge-intermediate">GROWING</span>
+                </label>
+            </div>
+
+            <!-- Advanced Level -->
+            <div class="level-option">
+                <input type="radio" name="skill-level" id="advanced" value="advanced">
+                <label for="advanced" class="level-label">
+                    <div class="radio-circle"></div>
+                    <div class="level-content">
+                        <div class="level-name">💎 Advanced</div>
+                        <div class="level-description">Working on complex projects, deep understanding</div>
+                    </div>
+                    <span class="level-badge badge-advanced">SKILLED</span>
+                </label>
+            </div>
+
+            <!-- Expert Level -->
+            <div class="level-option">
+                <input type="radio" name="skill-level" id="expert" value="expert">
+                <label for="expert" class="level-label">
+                    <div class="radio-circle"></div>
+                    <div class="level-content">
+                        <div class="level-name">🏆 Expert</div>
+                        <div class="level-description">Mastered the topic, can teach and mentor others</div>
+                    </div>
+                    <span class="level-badge badge-expert">MASTER</span>
+                </label>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

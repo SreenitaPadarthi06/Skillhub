@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skillhub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #003d7a;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .dark-mode-toggle {
+            background: none;
+            border: none;
+            color: #ffc107;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        
+        /* Footer */
+        footer {
+            background-color: #003d7a;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 2rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .about-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 80px 10%;
+      gap: 50px;
+    }
+
+    .about-content {
+      flex: 1 1 480px;
+      animation: slideIn 1.2s ease-in-out;
+    }
+
+    .about-content h1 {
+      font-size: 2.5rem;
+      color: #2646a3;
+      margin-bottom: 15px;
+    }
+
+    .about-content p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #444;
+      margin-bottom: 20px;
+    }
+
+    .highlight {
+      color: #007bff;
+      font-weight: 600;
+    }
+
+    .about-image {
+      flex: 1 1 350px;
+      text-align: center;
+      
+    }
+
+    .about-image img {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      
+    }
+
+
+    .learn-more-btn {
+      background: #2646a3;
+      color: #fff;
+      padding: 12px 28px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .learn-more-btn:hover {
+      background: #1c357f;
+      transform: translateY(-3px);
+    }
+
+    /* Animations */
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(10px);
+      }
+      to {
+        transform: translateY(-10px);
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .about-section {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 60px 6%;
+      }
+
+      .about-content h1 {
+        font-size: 2rem;
+      }
+
+      .about-content p {
+        font-size: 1rem;
+      }
+
+      .about-image img {
+        max-width: 300px;
+      }
+    }
+
+        /* Hamburger Menu for Mobile */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            transition: 0.3s;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 60px;
+                left: -100%;
+                flex-direction: column;
+                background-color: #003d7a;
+                width: 100%;
+                padding: 2rem;
+                transition: left 0.3s;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .features-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .hero {
+                padding: 4rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .cta-button {
+                padding: 0.875rem 2rem;
+                font-size: 1rem;
+            }
+
+            .features {
+                padding: 3rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">🎓 Skillhub</div>
+        <button class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="Index.html">Home</a></li>
+            <li><a href="Courses.html">Courses</a></li>
+            <li><a href="Projects.html">Projects</a></li>
+            <li><a href="Askdoubt.html">Ask Doubt</a></li>
+            <li><a href="About.html">About</a></li>
+        </ul>
+    </nav>
+
+   <section class="about-section">
+        <div class="about-content">
+      <h1><span class="highlight">SkillHub - A unified learning web application</span> 🚀</h1>
+      <p>
+        <span class="highlight">SkillHub</span> is an interactive learning platform designed to help 
+        students and professionals explore, learn, and master skills across different domains. 
+        From <strong>HTML, Python, Java, and C</strong> to hands-on projects, SkillHub offers a 
+        one-stop destination for practical skill development.
+      </p>
+      <p>
+        Track your <span class="highlight">learning progress</span>, attempt fun <span class="highlight">quizzes</span>, 
+        build <span class="highlight">mini-projects</span>, and ask your <span class="highlight">doubts</span> instantly — 
+        all in one place. Our goal is to make learning simple, structured, and engaging 
+        for every learner.
+      </p>
+      <p>
+        SkillHub encourages a <strong>learn-by-doing approach</strong> so you can turn your knowledge 
+        into real-world skills that matter.
+      </p>
+     <a href="Home.html"><button class="learn-more-btn">Start Learning</button></a>
+    </div>
+
+    <div class="about-image">
+      <img src="https://tse4.mm.bing.net/th/id/OIP.cC-rR6nu2DL24Gnr3qHb5gHaE8?pid=Api&P=0&h=220" alt="SkillHub Illustration">
+    </div>
+  </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Skillhub Platform</p>
+            
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

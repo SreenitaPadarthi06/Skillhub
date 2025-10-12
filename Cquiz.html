@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python</title>
+    <link rel="stylesheet" href="./Quiz.css">
+</head>
+<body>
+   <a href="Courses.html" class="back-button">←</a>
+<div class="container">
+    <div class="header">
+        <h1>C Programming Quiz</h1>
+        <div class="level">Level 1</div>
+    </div>
+
+    <form id="quizForm">
+        <div class="quiz-card">
+            <div class="question">
+                <span class="question-number">1.</span>Which of the following is used to print output in C?
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" id="q1a" name="q1" value="a">
+                    <label for="q1a">cout</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q1b" name="q1" value="b">
+                    <label for="q1b">printf()</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q1c" name="q1" value="c">
+                    <label for="q1c">print()</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-card">
+            <div class="question">
+                <span class="question-number">2.</span>Which data type is used to store a single character in C?
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" id="q2a" name="q2" value="a">
+                    <label for="q2a">string</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q2b" name="q2" value="b">
+                    <label for="q2b">char</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q2c" name="q2" value="c">
+                    <label for="q2c">int</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-card">
+            <div class="question">
+                <span class="question-number">3.</span>Which symbol is used to start a comment in C?
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" id="q3a" name="q3" value="a">
+                    <label for="q3a">//</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q3b" name="q3" value="b">
+                    <label for="q3b">#</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q3c" name="q3" value="c">
+                    <label for="q3c">--</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-card">
+            <div class="question">
+                <span class="question-number">4.</span>Which header file is required for input and output functions in C?
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" id="q4a" name="q4" value="a">
+                    <label for="q4a">#include &lt;stdlib.h&gt;</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q4b" name="q4" value="b">
+                    <label for="q4b">#include &lt;stdio.h&gt;</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q4c" name="q4" value="c">
+                    <label for="q4c">#include &lt;conio.h&gt;</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="submit-container">
+            <button type="submit" class="submit-btn">Submit Quiz</button>
+        </div>
+    </form>
+
+    <div class="result" id="result">
+        <h2>Quiz Complete!</h2>
+        <div class="score" id="score"></div>
+        <p id="message"></p><br>
+        <button class="retry-btn" onclick="location.reload()">Try Again</button>
+    </div>
+</div>
+
+</body>
+</html>

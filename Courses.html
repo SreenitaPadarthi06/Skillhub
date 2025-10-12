@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillHub - Course Catalog</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e8eef2;
+        }
+
+        /* Back Button */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: rgba(255, 255, 255, 0.3);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.8rem;
+            transition: background-color 0.3s, transform 0.3s;
+            z-index: 10;
+        }
+
+        .back-button:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+            transform: translateX(-3px);
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #1e88e5 0%, #1976d2 100%);
+            color: white;
+            text-align: center;
+            padding: 3.5rem 2rem;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        /* Courses Container */
+        .courses-container {
+            max-width: 1400px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        /* Course Card */
+        .course-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 280px;
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .course-icon {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .course-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Icon styles using CSS */
+        .icon-c {
+            width: 90px;
+            height: 90px;
+            background-color: #659ad2;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        .icon-cpp {
+            width: 90px;
+            height: 90px;
+            background-color: #00599c;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        .icon-java {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(to bottom, #f89820 50%, #5382a1 50%);
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .icon-python {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #3776ab 50%, #ffd343 50%);
+            border-radius: 15px;
+        }
+
+        .icon-html {
+            width: 90px;
+            height: 90px;
+            background-color: #e34c26;
+            clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 50% 90%, 0% 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        .icon-css {
+            width: 90px;
+            height: 90px;
+            background-color: #264de4;
+            clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 50% 90%, 0% 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        .icon-js {
+            width: 90px;
+            height: 90px;
+            background-color: #f7df1e;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .icon-react {
+            width: 90px;
+            height: 90px;
+            background-color: #61dafb;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            color: #282c34;
+        }
+
+        .course-card h3 {
+            color: #1976d2;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .view-course-btn {
+            background-color: #1976d2;
+            color: white;
+            padding: 0.75rem 2.5rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .view-course-btn:hover {
+            background-color: #1565c0;
+            transform: scale(1.05);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .courses-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .courses-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .header h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .courses-container {
+                grid-template-columns: 1fr;
+                margin: 2rem auto;
+                padding: 0 1rem;
+            }
+
+            .header {
+                padding: 2.5rem 1rem;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .course-card {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .back-button {
+                top: 15px;
+                left: 15px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Back Button -->
+    <a href="Index.html" class="back-button">←</a>
+
+    <!-- Header Section -->
+    <section class="header">
+        <h1>SkillHub - Course Catalog</h1>
+    </section>
+
+    <!-- Courses Container -->
+    <div class="courses-container">
+        <!-- C Language -->
+        <div class="course-card">
+            <div class="course-icon">
+                <div class="icon-c">C</div>
+            </div>
+            <h3>C Language</h3>
+            <a href="C.html" class="view-course-btn">View Course</a><br>
+            <a href="Progress.html" class="view-course-btn">Set Progress</a>
+        </div>
+
+        
+
+        <!-- Java Programming -->
+        <div class="course-card">
+            <div class="course-icon">
+                <div class="icon-java"></div>
+            </div>
+            <h3>Java Programming</h3>
+            <a href="#" class="view-course-btn">View Course</a><br>
+            <a href="#" class="view-course-btn">Set Progress</a>
+        </div>
+
+        <!-- Python Programming -->
+        <div class="course-card">
+            <div class="course-icon">
+                <div class="icon-python"></div>
+            </div>
+            <h3>Python Programming</h3>
+            <a href="Python.html" class="view-course-btn">View Course</a><br>
+            <a href="Progress.html" class="view-course-btn">Set Progress</a>
+        </div>
+
+        <!-- HTML -->
+        <div class="course-card">
+            <div class="course-icon">
+                <div class="icon-html">5</div>
+            </div>
+            <h3>HTML</h3>
+            <a href="Html.html" class="view-course-btn">View Course</a><br>
+            <a href="Progress.html" class="view-course-btn">Set Progress</a>
+        </div>
+
+        <!-- CSS -->
+        <div class="course-card">
+            <div class="course-icon">
+                <div class="icon-css">3</div>
+            </div>
+            <h3>CSS</h3>
+            <a href="Css.html" class="view-course-btn">View Course</a><br>
+            <a href="Progress.html" class="view-course-btn">Set Progress</a>
+        </div>
+
+        <!-- JavaScript -->
+        <div class="course-card">
+            <div class="course-icon">
+                <div class="icon-js">JS</div>
+            </div>
+            <h3>JavaScript</h3>
+            <a href="#" class="view-course-btn">View Course</a><br>
+            <a href="#" class="view-course-btn">Set Progress</a>
+        </div>
+
+       
+</body>
+</html>

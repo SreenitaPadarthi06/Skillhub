@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini-project</title>
+</head>
+  <link rel="stylesheet" href="./Miniprojects.css" />
+</head>
+<body>
+
+<header>
+  <h1>Python - Weather App</h1>
+  <p>A step-by-step guide to build a simple weather application using Python and API integration.</p>
+</header>
+
+<div class="content">
+  <h2>Project Overview</h2>
+  <p>
+    This project creates a Python program that fetches live weather data from an online API and displays it.
+    You will learn how to work with APIs, handle JSON data, and basic Python programming.
+  </p>
+
+  <h2>Tools & Skills Needed</h2>
+  <ul>
+    <li>Python 3 installed on your computer</li>
+    <li>Basic Python programming (variables, functions, libraries)</li>
+    <li>Internet access to use a weather API (e.g., OpenWeatherMap)</li>
+  </ul>
+
+  <h2>Step-by-Step Instructions</h2>
+  <ol>
+    <li><strong>Install Requests library:</strong>  
+      Open your terminal and run: pip install requests</li>
+    <li><strong>Get an API Key:</strong>  
+      Register at <a href="https://openweathermap.org/api" target="_blank">OpenWeatherMap</a> and get your free API key.</li>
+    <li><strong>Write the Python script:</strong>  
+      Use the code below to fetch and display weather data:
+      <br/>
+      import requests<br/><br/>
+      api_key = "YOUR_API_KEY"<br/>
+      city = input("Enter city name: ")<br/>
+      url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"<br/><br/>
+      response = requests.get(url)<br/>
+      data = response.json()<br/><br/>
+      if data["cod"] == 200:<br/>
+      &nbsp;&nbsp;&nbsp;&nbsp;temperature = data["main"]["temp"]<br/>
+      &nbsp;&nbsp;&nbsp;&nbsp;description = data["weather"][0]["description"]<br/>
+      &nbsp;&nbsp;&nbsp;&nbsp;print(f"Temperature: {temperature}°C")<br/>
+      &nbsp;&nbsp;&nbsp;&nbsp;print(f"Weather Description: {description}")<br/>
+      else:<br/>
+      &nbsp;&nbsp;&nbsp;&nbsp;print("City not found.")<br/>
+    </li>
+    <li><strong>Run and test your program:</strong>  
+      Execute the script, enter different city names and check the output.</li>
+    <li><strong>Optional Enhancements:</strong>  
+      Add error handling, display more details, or build a GUI using Tkinter.</li>
+  </ol>
+
+  <h2>Expected Outcome</h2>
+  <p>Your program will display the current temperature and weather description for any city entered.</p>
+
+ 
+
+  <a href="Projects.html"><button>Back to Projects</button></a>
+</div>
+
+</body>
+</html>

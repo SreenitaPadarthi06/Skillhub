@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> 
+  <link rel="stylesheet" href="Miniprojects.css" />
+</head>
+<body>
+
+  <header>
+    <h1>SQL - Employee Database</h1>
+    <p>Design a database system to store and manage employee records efficiently.</p>
+  </header>
+
+  <div class="content">
+    <h2>Project Overview</h2>
+    <p>
+      In this project, you will design a simple employee database using SQL.
+      Learn to create tables, insert records, and run basic queries.
+    </p>
+
+    <h2>Tools & Skills Needed</h2>
+    <ul>
+      <li>SQL knowledge (CREATE, INSERT, SELECT, UPDATE, DELETE)</li>
+      <li>Database management system (e.g., MySQL, SQLite, PostgreSQL)</li>
+    </ul>
+
+    <h2>Step-by-Step Instructions</h2>
+    <ol>
+      <li><strong>Setup the Database:</strong>  
+        Create a database called company.
+      </li>
+      <li><strong>Create the Employee Table:</strong>  
+        Use the following SQL commands:<br>
+        CREATE TABLE employees ( <br>
+        &nbsp;&nbsp;id INT PRIMARY KEY AUTO_INCREMENT,<br>
+        &nbsp;&nbsp;name VARCHAR(100),<br>
+        &nbsp;&nbsp;department VARCHAR(50),<br>
+        &nbsp;&nbsp;salary DECIMAL(10, 2)<br>
+        );
+      </li>
+      <li><strong>Insert Records:</strong>  
+        Insert a few sample employees:<br>
+        INSERT INTO employees (name, department, salary) VALUES<br>
+        ('Alice Johnson', 'HR', 55000),<br>
+        ('Bob Smith', 'Engineering', 75000),<br>
+        ('Carol Lee', 'Sales', 60000);
+      </li>
+      <li><strong>Query the Table:</strong>  
+        Retrieve employee records:<br>
+        SELECT * FROM employees;
+      </li>
+      <li><strong>Update or Delete Records:</strong>  
+        Try updating a salary:<br>
+        UPDATE employees SET salary = 58000 WHERE name = 'Alice Johnson';<br>
+        Or delete a record:<br>
+        DELETE FROM employees WHERE name = 'Bob Smith';
+      </li>
+    </ol>
+
+    <h2>Expected Outcome</h2>
+    <p>
+      A functional employee database where you can store and manage employee data using SQL queries.
+    </p>
+
+    <a href="Projects.html"><button>Back to Projects</button></a>
+  </div>
+
+</body>
+</html>
+</body>
+</html>

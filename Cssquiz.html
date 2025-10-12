@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python</title>
+    <link rel="stylesheet" href="./Quiz.css">
+</head>
+<body>
+   <a href="Courses.html" class="back-button">←</a>
+<div class="container">
+    <div class="header">
+        <h1>CSS Quiz</h1>
+        <div class="level">Level 1</div>
+    </div>
+
+    <form id="quizForm">
+        <div class="quiz-card">
+            <div class="question">
+                <span class="question-number">1.</span>What does CSS stand for?
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" id="q1a" name="q1" value="a">
+                    <label for="q1a">Colorful Style Sheets</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q1b" name="q1" value="b">
+                    <label for="q1b">Cascading Style Sheets</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q1c" name="q1" value="c">
+                    <label for="q1c">Computer Style Sheets</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-card">
+            <div class="question">
+                <span class="question-number">2.</span>Which property is used to change the background color in CSS?
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" id="q2a" name="q2" value="a">
+                    <label for="q2a">color</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q2b" name="q2" value="b">
+                    <label for="q2b">background-color</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q2c" name="q2" value="c">
+                    <label for="q2c">bgcolor</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-card">
+            <div class="question">
+                <span class="question-number">3.</span>How do you select an element with the id "header" in CSS?
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" id="q3a" name="q3" value="a">
+                    <label for="q3a">.header</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q3b" name="q3" value="b">
+                    <label for="q3b">#header</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q3c" name="q3" value="c">
+                    <label for="q3c">header</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-card">
+            <div class="question">
+                <span class="question-number">4.</span>Which property controls the text size in CSS?
+            </div>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" id="q4a" name="q4" value="a">
+                    <label for="q4a">font-size</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q4b" name="q4" value="b">
+                    <label for="q4b">text-style</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q4c" name="q4" value="c">
+                    <label for="q4c">text-size</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="submit-container">
+            <button type="submit" class="submit-btn">Submit Quiz</button>
+        </div>
+    </form>
+
+    <div class="result" id="result">
+        <h2>Quiz Complete!</h2>
+        <div class="score" id="score"></div>
+        <p id="message"></p><br>
+        <button class="retry-btn" onclick="location.reload()">Try Again</button>
+    </div>
+</div>
+
+</body>
+</html>

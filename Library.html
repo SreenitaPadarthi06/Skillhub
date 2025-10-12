@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<head>
+  <link rel="stylesheet" href="Miniprojects.css" />
+</head>
+<body>
+
+<header>
+  <h1>Java - Library Management System</h1>
+  <p>A step-by-step guide to building a basic Library Management System in Java.</p>
+</header>
+
+<div class="content">
+  <h2>Project Overview</h2>
+  <p>
+    This project will teach you how to create a simple system to manage a collection of books in a library.  
+    You'll learn how to use Java's core concepts like classes, objects, and collections to build a functional program.
+  </p>
+
+  <h2>Tools & Skills Needed</h2>
+  <ul>
+    <li>Java JDK installed on your computer</li>
+    <li>Basic understanding of Java (variables, classes, objects, lists)</li>
+    <li>A text editor or IDE (like Eclipse, IntelliJ IDEA, or VS Code)</li>
+  </ul>
+
+  <h2>Step-by-Step Instructions</h2>
+  <ol>
+    <li><strong>Set up your project:</strong>  
+      Create a new Java file named <strong>LibraryManagement.java</strong>.</li>
+
+    <li><strong>Define the Book class:</strong>  
+      This class will store book details (ID, title, author, etc.).  
+      <br><br>
+      class Book {<br>
+      &nbsp;&nbsp;int id;<br>
+      &nbsp;&nbsp;String title;<br>
+      &nbsp;&nbsp;String author;<br><br>
+      &nbsp;&nbsp;public Book(int id, String title, String author) {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;this.id = id;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;this.title = title;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;this.author = author;<br>
+      &nbsp;&nbsp;}<br><br>
+      &nbsp;&nbsp;public String toString() {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;return id + " - " + title + " by " + author;<br>
+      &nbsp;&nbsp;}<br>
+      }<br>
+    </li>
+
+    <li><strong>Create the main program:</strong>  
+      In your <strong>main</strong> method, create a list to store books and provide options to:  
+      - Add a book  
+      - View all books  
+      - Update book details  
+      - Delete a book  
+      <br><br>
+      import java.util.*;<br><br>
+      public class LibraryManagement {<br>
+      &nbsp;&nbsp;public static void main(String[] args) {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;Scanner sc = new Scanner(System.in);<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;ArrayList&lt;Book&gt; books = new ArrayList&lt;&gt;();<br><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;while (true) {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("<br>1. Add Book<br>2. View Books<br>3. Update Book<br>4. Delete Book<br>5. Exit");<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.print("Enter choice: ");<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int choice = sc.nextInt();<br><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;switch (choice) {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case 1:<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.print("Enter ID: ");<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int id = sc.nextInt();<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sc.nextLine();<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.print("Enter Title: ");<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String title = sc.nextLine();<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.print("Enter Author: ");<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String author = sc.nextLine();<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;books.add(new Book(id, title, author));<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Book added!");<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case 2:<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Books in Library:");<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (Book b : books)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(b);<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case 3:<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.print("Enter ID to update: ");<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int updateId = sc.nextInt();<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sc.nextLine();<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (Book b : books) {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (b.id == updateId) {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.print("Enter new title: ");<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b.title = sc.nextLine();<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.print("Enter new author: ");<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b.author = sc.nextLine();<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Book updated!");<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case 4:<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.print("Enter ID to delete: ");<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int deleteId = sc.nextInt();<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;books.removeIf(b -> b.id == deleteId);<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Book deleted!");<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case 5:<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Goodbye!");<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;<br><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default:<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Invalid choice.");<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+      &nbsp;&nbsp;}<br>
+      }<br>
+    </li>
+
+    <li><strong>Run your program:</strong>  
+      Compile and run the program in the terminal or your IDE to test adding, updating, and deleting books.</li>
+
+    <li><strong>Optional Enhancements:</strong>  
+      Add search functionality, save data to a file, or create a GUI with Java Swing.</li>
+  </ol>
+
+  <h2>Expected Outcome</h2>
+  <p>Your program will allow you to manage books in the library through a console-based interface.</p>
+
+ 
+
+  <a href="Projects.html"><button>Back to Projects</button></a>
+</div>
+
+</body>
+</html>

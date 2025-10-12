@@ -1,0 +1,53 @@
+
+    body {
+  font-family: Arial, sans-serif;
+  background: #00eeff;
+  color: #333;
+  line-height: 1.6;
+  padding: 20px;
+  background-image: url("./bgimg.jpg");
+  background-size: 100% 100%;
+  
+}
+
+header {
+  text-align: center;
+ 
+}
+
+header h1 {
+  font-size: 2rem;
+  color: #222;
+}
+
+header p {
+  font-size: 1rem;
+  color: #555;
+}
+
+
+.content {
+    width:900px;
+   position:relative;
+   left:100px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.content h2 {
+  color: #444;
+}
+
+button {
+  background: #1976d2;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 3px;
+}
+
+button:hover {
+  background: #125ca1;
+}
